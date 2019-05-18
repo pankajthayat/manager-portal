@@ -5,7 +5,7 @@ export default class ViewTask extends React.Component{
         console.log("propes : ", this.props)
         console.log("propes : ", this.props.name)
        return <div>View
-           <button onClick = {()=>{this.props.location.name.demo("pankaj")}}> click me</button>
+           <button> click me</button>
        </div>
     }
 }
