@@ -4,7 +4,6 @@ import {
   Redirect,
   Route,
   Switch,
-  Router
 } from "react-router-dom";
 
 import Header from "../components/Header";
@@ -17,15 +16,14 @@ import UpdateTask from "../components/UpdateTask";
 export default () => (
   <BrowserRouter>
     <div>
-    <Header />
+      <Header />
       <Switch>
-        <Route path="/" exact component={AddUser} />
         <Route path="/AddUser" component={AddUser} />
         <Route path="/AddProject" component={AddProject} />
         <Route path="/AddTask" component={AddTask} />
         <Route path="/ViewTask" component={ViewTask} />
         <Route path="/UpdateTask" component={UpdateTask} />
-        <Route component={() => <Redirect to={"/"} />} />
+        <Route component={() => <Redirect to={"/AddUser"} />} />
       </Switch>
     </div>
   </BrowserRouter>

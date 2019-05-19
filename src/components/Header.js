@@ -1,21 +1,34 @@
-import React from 'react';
-import { withRouter } from 'react-router';
+import React from "react";
 import { NavLink } from "react-router-dom";
-class Header extends React.Component{
-    render(){
-        return(
-            <div>
-                <h1>Manger portal</h1>
-                <NavLink to = "/">Add task</NavLink>
-                <NavLink to = "/AddUser">Add User</NavLink>
-                <NavLink to = "/AddProject">Add Project</NavLink>
-                <NavLink to = "/AddTask">Add task</NavLink>
-                <NavLink to = "/ViewTask">view Task</NavLink>
-                <NavLink to = "/UpdateTask">Update Task</NavLink>
-            </div>
-        )
-        
-    }
-}
 
-export default Header;
+export default () => (
+  <nav className="navbar navbar-expand-sm bg-light">
+    <ul className="navbar-nav">
+      <li class="nav-item">
+        <NavLink to="/AddUser" className="nav-link">
+          Add User
+        </NavLink>
+      </li>
+      <li class="nav-item">
+        <NavLink to="/AddProject" className="nav-link">
+          Add Project
+        </NavLink>
+      </li>
+      <li class="nav-item">
+        <NavLink to="/AddTask" className="nav-link">
+          Add task
+        </NavLink>
+      </li>
+      <li class="nav-item">
+        <NavLink to="/ViewTask" className="nav-link">
+          view Task
+        </NavLink>
+      </li>
+      <li class="nav-item">
+        <NavLink to="/UpdateTask" className="nav-link">
+          Update Task
+        </NavLink>
+      </li>
+    </ul>
+  </nav>
+);

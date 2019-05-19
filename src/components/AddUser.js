@@ -1,13 +1,7 @@
-import React from 'react';
-import { Redirect } from 'react-router'
+import React from "react";
 
-export default class AddUser extends React.Component{
-    render(){
-        return(
-            <div>
-                Add user
-                </div>
-        )
-        
-    }
+export default class AddUser extends React.Component {
+  render() {
+    return <div>Add user</div>;
+  }
 }
