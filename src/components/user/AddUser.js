@@ -1,20 +1,27 @@
 import React from "react";
+import { Field, reduxForm } from 'redux-form'
 
-export default class AddUser extends React.Component {
-  submitHandler = (event, action) => {
-    const form = event.currentTarget;
-    event.preventDefault();
-    if (form && form.checkValidity() === false) {
-
-      event.stopPropagation();
-      event.target.className += " was-validated";
-    } else if (event.type == "submit") {
-      this.handleOnSubmit(event, "save")
-    }
-  }
+class AddUser extends React.Component {
+ 
+  
+  
   render() {
-    return <div>Add user
-           
+    console.log("props: ", this.props)
+    return <div>
+      <form>
+     <label>First Name: </label>
+     <Field name = "firstName" component = "input"/>
+     <label>Last Name: </label>
+     <Field name = "lastName" component = "input"/>
+     <label>Email: </label>
+     <Field name = "email" component = "input"/>
+     <button type = "submit">Submit</button>
+     </form>
     </div>;
   }
 }
+
+
+export default reduxForm({
+  form: "user"
+})(AddUser)
