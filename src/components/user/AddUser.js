@@ -25,13 +25,10 @@ class AddUser extends React.Component {
     e.preventDefault();
     console.log("handle on submit : ", e)
   }
-   renderInput =({input,meta, label})=>{
+   renderInput =({input,meta, label, col})=>{
 return(
   <>
-  <div className="col-sm-3 col-form-label">
-  <label>{label}: </label>
-  </div>
-  <div className="col-sm-9">
+  <div className={`col-sm-${col}`}>
   <input {...input } className="form-control" placeHolder = {label} /> {/* all the meta info are injuected into component here*/ }
  {meta.error && meta.touched && <span>{meta.error}</span> }
  </div>
@@ -44,16 +41,55 @@ return(
        <div className="form-component">
       <form className="form-horizontal" onSubmit = {this.handleOnSubmit}>
       <div className="container">
+      <div className="form-group">
       <div className="row">
-     <Field name = "firstName" label = "First Name" component = {this.renderInput}/> {/* all the meta info are injuected into component here*/ }
+      <div className="col-sm-2 col-form-label">
+          <label>First Name: </label>
+          </div>
+     <Field name = "firstName" label = "First Name" col = "6"  component = {this.renderInput}/> {/* all the meta info are injuected into component here*/ }
+    </div>
      </div>
+     <div className="form-group">
      <div className="row">
-     <Field name = "lastName" label = "Last Name" component = {this.renderInput}/> {/* all the meta info are injuected into component here*/ }
+     <div className="col-sm-2 col-form-label">
+          <label>Last Name: </label>
+          </div>
+     <Field name = "lastName" label = "Last Name" col = "6"  component = {this.renderInput}/> {/* all the meta info are injuected into component here*/ }
      </div>
+     </div>
+     <div className="form-group">
      <div className="row">
-     <Field name = "email" label = "email" component = {this.renderInput}/> {/* all the meta info are injuected into component here*/ }
+     <div className="col-sm-2 col-form-label">
+          <label>Employee Id: </label>
+          </div>
+     <Field name = "employeeId" label = "employeeId"  col = "3" component = {this.renderInput}/> {/* all the meta info are injuected into component here*/ }
      </div>
-     <button type = "submit">Submit</button>
+     </div>
+     <div className="form-group2">
+                  <div className="row">
+     <div className="col-sm-5" />
+                    <div className="col-sm-4">
+     <span className="button-space">
+          <input
+            type="submit"
+            id="formSubmit"
+            value="Add"
+            className="btn btn-outline-dark custom"
+          />
+         
+        </span>
+        <span className="button-space">
+                        <button
+                          type="button"
+                          className="btn btn-outline-dark custom"
+                  
+                        >
+                          Reset
+                        </button>
+                      </span>
+        </div>
+        </div>
+     </div>
      </div>
      </form>
      </div>
