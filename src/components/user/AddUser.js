@@ -1,5 +1,7 @@
 import React from "react";
 import { Field, reduxForm } from 'redux-form'
+import { connect } from "react-redux";
+import * as userAction from "../../actions/userActions";
 
 
   // this fn is given all the form values and return an errors object
@@ -23,13 +25,14 @@ class AddUser extends React.Component {
 
   handleOnSubmit = e =>{
     e.preventDefault();
-    console.log("handle on submit : ", e)
+    console.log("handle on submit : ")
+    this.props.addUser(this.props.user)
   }
    renderInput =({input,meta, label, col})=>{
 return(
   <>
   <div className={`col-sm-${col}`}>
-  <input {...input } className="form-control" placeHolder = {label} /> {/* all the meta info are injuected into component here*/ }
+  <input {...input } className="form-control" placeholder = {label} /> {/* all the meta info are injuected into component here*/ }
  {meta.error && meta.touched && <span>{meta.error}</span> }
  </div>
  </>
@@ -98,8 +101,23 @@ return(
 
 }
 
+const mapStatetoProps = (state) =>{
+  console.log("hjdsh:", state.user.x)
+  console.log("state: ", state, state.form.user)
+  return{
+    user: state.form.user.values,
+    initialValues : state.user.x
+  }
+}
+const mapDisptachToProps = (dispatch) =>{
+  return{
+    addUser: (user) => dispatch(userAction.addUser(user))
+  }
+}
+
 export default reduxForm({
   form: "user",
+  enableReinitialize: false,
   destroyOnUnmount: false, //to not destroy from data on unmount
   validate: validate
-})(AddUser)
+})(connect(mapStatetoProps, mapDisptachToProps)(AddUser));
