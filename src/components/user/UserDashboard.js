@@ -1,5 +1,4 @@
 import React from "react";
-import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import UserForm from "./UserForm";
 import * as userAction from "../../actions/userActions";
@@ -11,7 +10,7 @@ class UserDashboard extends React.Component {
   state={
     sortName:undefined,
     filterName: "firstName",
-    filterText: undefined,
+    filterText: undefined
   }
   componentDidMount() {
     this.props.getUsers();
@@ -25,16 +24,16 @@ class UserDashboard extends React.Component {
   render() {
     const { users, deleteUser, updateUser, editUser,sortUsers } = this.props;
     const { sortName, filterName, filterText } = this.state;
-    console.log("sele : ", selector(users, sortName, filterName, filterText))
     return (
       <div className="container">
         <UserForm />
+
         <SearchBar 
         onFilterTextChange={this.onFilterTextChange}
         onSortClick = {this.onSortClick}
         />
+
         <ViewUser
-  
           users={selector(users, sortName, filterName, filterText)}
           deleteUser={deleteUser}
           editUser={editUser}

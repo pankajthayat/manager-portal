@@ -34,3 +34,6 @@
   .custom-sort-id{
     width: 80px !important;
   }
+  .odd{
+    background-color: floralwhite;
+  }

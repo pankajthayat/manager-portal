@@ -2,28 +2,19 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import * as userAction from "../../actions/userActions";
+import validate from "./formValidation";
 
-// this fn is given all the form values and return an errors object
-const validate = values => {
-  //errors obj should be in same shape as values obj
-  const errors = {};
-  if (!values.firstName) {
-    errors.firstName = "Required";
-  }
-  if (!values.lastName) {
-    errors.lastName = "Required";
-  }
-  if (!values.email) {
-    errors.email = "Required";
-  }
-  return errors;
-};
 class UserForm extends React.Component {
-  handleOnSubmit = e => {
+
+  handleOnSubmit = (e, action) => {
     e.preventDefault();
-    console.log("handle on submit : ");
-    this.props.addUser(this.props.user);
+    if(action == "update"){
+      this.props.updateUser(this.props.user, this.props.reset());
+    } else{
+      this.props.addUser(this.props.user, this.props.reset());
+    }
   };
+
   renderInput = ({ input, meta, label, col }) => {
     return (
       <>
@@ -35,12 +26,13 @@ class UserForm extends React.Component {
       </>
     );
   };
+
   render() {
-    console.log("props: ", this.props);
+    const { buttonType } = this.props;
     return (
       <div>
         <div className="form-component">
-          <form className="form-horizontal" onSubmit={this.handleOnSubmit} autocomplete="off" >
+          <form className="form-horizontal" onSubmit={(e)=>this.handleOnSubmit(e, buttonType)}>
             <div className="container">
               <div className="form-group">
                 <div className="row">
@@ -92,7 +84,7 @@ class UserForm extends React.Component {
                       <input
                         type="submit"
                         id="formSubmit"
-                        value="Add"
+                        value={buttonType == "update" ? "Update":"Add"}
                         className="btn btn-outline-dark custom"
                       />
                     </span>
@@ -116,28 +108,29 @@ class UserForm extends React.Component {
 }
 
 const mapStatetoProps = state => {
-  console.log("hjdsh:", state.user.x);
-  console.log("state: ", state, state.form.user);
   return {
-    user: state.form.user.values,
-    initialValues: state.user.formData
+    initialValues: state.user.formData,
+    buttonType: state.user.buttonType,
+    user: state.form && state.form.user && state.form.user.values,
   };
 };
 const mapDisptachToProps = dispatch => {
   return {
-    addUser: user => dispatch(userAction.addUser(user))
+    addUser: (user, reset) => dispatch(userAction.addUser(user, reset)),
+    updateUser: (user, reset) => dispatch(userAction.updateUser(user, reset)),
   };
 };
 
-export default reduxForm({
+ UserForm = reduxForm({
   form: "user",
   enableReinitialize: false,
   destroyOnUnmount: false, //to not destroy from data on unmount
   validate: validate,
-  enableReinitialize: true
-})(
+  enableReinitialize: true 
+})(UserForm);
+
+export default 
   connect(
     mapStatetoProps,
     mapDisptachToProps
-  )(UserForm)
-);
+  )(UserForm);

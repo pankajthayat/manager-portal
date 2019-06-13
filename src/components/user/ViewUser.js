@@ -3,6 +3,6 @@ import User from "./User";
 
 export default ({ users, deleteUser, editUser }) => {
   return users.map((user, index) => (
-    <User key = {index} user={user} deleteUser={deleteUser} editUser={editUser} />
+    <User user={user} deleteUser={deleteUser} editUser={editUser} key = {index} index={index} length = {users.length}/>
   ));
 };
