@@ -19,7 +19,7 @@ export default ({onFilterTextChange, onSortClick})=>(
         <button
               type="button"
               className="btn btn-outline-dark custom-sort-name"
-                onClick ={()=>onSortClick("firtName")}
+                onClick ={()=>onSortClick("firstName")}
             >
               
               First Name

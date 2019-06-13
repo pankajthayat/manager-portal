@@ -5,12 +5,12 @@ export default () => (
   <nav className="navbar navbar-expand-sm bg-light">
     <ul className="navbar-nav">
       <li className="nav-item">
-        <NavLink to="/AddUser" className="nav-link">
+        <NavLink to="/user" className="nav-link">
           Add User
         </NavLink>
       </li>
       <li className="nav-item">
-        <NavLink to="/AddProject" className="nav-link">
+        <NavLink to="/project" className="nav-link">
           Add Project
         </NavLink>
       </li>

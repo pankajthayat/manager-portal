@@ -9,7 +9,7 @@ import {
 import Header from "../components/header/Header";
 import UserDashboard from "../components/user/UserDashboard";
 import AddTask from "../components/task/AddTask";
-import AddProject from "../components/project/AddProject";
+import ProjectDashboard from "../components/project/ProjectDashboard";
 import ViewTask from "../components/task/ViewTask";
 import UpdateTask from "../components/task/UpdateTask";
 
@@ -22,7 +22,7 @@ export default () => (
       <Header />
       <Switch>
         <Route path="/user" component={UserDashboard} />
-        <Route path="/AddProject" component={AddProject} />
+        <Route path="/project" component={ProjectDashboard} />
         <Route path="/AddTask" component={AddTask} />
         <Route path="/ViewTask" component={ViewTask} />
         <Route path="/UpdateTask" component={UpdateTask} />
