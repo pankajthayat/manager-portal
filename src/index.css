@@ -4,3 +4,33 @@
   .custom{
     width: 35% !important;
   }
+
+  .form-component{
+    border-bottom: 3px solid blue;
+    padding-bottom: 2%;
+    padding-top: 2%;
+  }
+  
+  .view-user{
+    padding-top: 2%;
+    border-bottom: 3px dotted black;
+  }
+  .search-bar{
+    padding-bottom: 2%;
+    padding-top: 2%;
+    border-bottom: 3px dotted black;
+  }
+  .search-bar-button{
+    padding-right: 2%;;
+  }
+  .sort{
+    padding-right: 1%;;
+  }
+
+  .custom-sort-name{
+    width: 120px !important;
+    
+  }
+  .custom-sort-id{
+    width: 80px !important;
+  }
