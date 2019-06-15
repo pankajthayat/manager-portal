@@ -49,7 +49,7 @@ export const addUser = (user, reset) => async dispatch => {
       export const deleteUser = (user) => async dispatch => {
         try {
           dispatch({ type: "DELETE_USER_PENDING"});
-          const response = await axios.delete(`${BASE_API_URL}/delete/${user.id}`);
+          await axios.delete(`${BASE_API_URL}/delete/${user.id}`);
           dispatch({
             type: "DELETE_USER",
             payload: user.id

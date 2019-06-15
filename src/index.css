@@ -11,7 +11,7 @@
     padding-top: 2%;
   }
   
-  .view-user{
+  .view-content{
     padding-top: 2%;
     border-bottom: 3px dotted black;
   }
@@ -37,3 +37,15 @@
   .odd{
     background-color: floralwhite;
   }
+
+  .project-box{
+background-color: gray
+  }
+
+  .priority-box{
+    background-color: lavenderblush;
+    margin-left: 10px;
+      }
+      .custom-checkbox{
+margin-left: 20px;
+      }

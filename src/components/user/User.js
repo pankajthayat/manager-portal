@@ -4,11 +4,11 @@ export default ({ user, deleteUser, editUser, index,length }) => {
     const position = (index+length)%2 === 0 ? "even" :"odd"; // length is used to make the color dynamic... 
     //...observe by removing lenght....the color postion will be constant
     return(
-        <div className = {`view-user ${position}`}>
+        <div className = {`view-content ${position}`}>
         <div className="row form-group">
           <div className="col-sm-6">
             <input
-              class="form-control"
+              className="form-control"
               type="text"
               placeholder={user.firstName}
               readOnly
@@ -29,7 +29,7 @@ export default ({ user, deleteUser, editUser, index,length }) => {
         <div className="row form-group">
           <div className="col-sm-6">
             <input
-              class="form-control"
+              className="form-control"
               type="text"
               placeholder={user.lastName}
               readOnly
@@ -50,7 +50,7 @@ export default ({ user, deleteUser, editUser, index,length }) => {
         <div className="row form-group">
           <div className="col-sm-6">
             <input
-              class="form-control"
+              className="form-control"
               type="text"
               placeholder={user.employeeId}
               readOnly

@@ -9,8 +9,8 @@ const validate = values => {
     if (!values.lastName) {
       errors.lastName = "Required";
     }
-    if (!values.email) {
-      errors.email = "Required";
+    if (!values.employeeId) {
+      errors.employeeId = "Required";
     }
     return errors;
   };

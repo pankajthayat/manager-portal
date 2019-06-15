@@ -8,7 +8,7 @@ class UserForm extends React.Component {
 
   handleOnSubmit = (e, action) => {
     e.preventDefault();
-    if(action == "update"){
+    if(action === "update"){
       this.props.updateUser(this.props.user, this.props.reset());
     } else{
       this.props.addUser(this.props.user, this.props.reset());
@@ -19,7 +19,7 @@ class UserForm extends React.Component {
     return (
       <>
         <div className={`col-sm-${col}`}>
-          <input {...input} className="form-control" placeholder={label} autocomplete="off" />{" "}
+          <input {...input} className="form-control" placeholder={label} autoComplete="off" />{" "}
           {/* all the meta info are injuected into component here*/}
           {meta.error && meta.touched && <span>{meta.error}</span>}
         </div>
@@ -28,7 +28,8 @@ class UserForm extends React.Component {
   };
 
   render() {
-    const { buttonType } = this.props;
+    const { buttonType, pristine, submitting } = this.props;
+    console.log("t ", this.props)
     return (
       <div>
         <div className="form-component">
@@ -57,6 +58,7 @@ class UserForm extends React.Component {
                     name="lastName"
                     label="Last Name"
                     col="6"
+                    autoComplete="off"
                     component={this.renderInput}
                   />{" "}
                   {/* all the meta info are injuected into component here*/}
@@ -86,12 +88,14 @@ class UserForm extends React.Component {
                         id="formSubmit"
                         value={buttonType == "update" ? "Update":"Add"}
                         className="btn btn-outline-dark custom"
+                        disabled={ submitting}
                       />
                     </span>
                     <span className="button-space">
                       <button
                         type="button"
                         className="btn btn-outline-dark custom"
+                        disabled={pristine || submitting}
                       >
                         Reset
                       </button>
@@ -123,7 +127,6 @@ const mapDisptachToProps = dispatch => {
 
  UserForm = reduxForm({
   form: "user",
-  enableReinitialize: false,
   destroyOnUnmount: false, //to not destroy from data on unmount
   validate: validate,
   enableReinitialize: true 
