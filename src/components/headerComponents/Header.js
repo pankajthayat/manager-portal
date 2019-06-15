@@ -24,11 +24,6 @@ export default () => (
           view Task
         </NavLink>
       </li>
-      <li className="nav-item">
-        <NavLink to="/UpdateTask" className="nav-link">
-          Update Task
-        </NavLink>
-      </li>
     </ul>
   </nav>
 );

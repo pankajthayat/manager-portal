@@ -6,12 +6,11 @@ import {
   Switch,
 } from "react-router-dom";
 
-import Header from "../components/header/Header";
-import UserDashboard from "../components/user/UserDashboard";
-import AddTask from "../components/task/AddTask";
-import ProjectDashboard from "../components/project/ProjectDashboard";
-import ViewTask from "../components/task/ViewTask";
-import UpdateTask from "../components/task/UpdateTask";
+import Header from "../components/headerComponents/Header";
+import UserDashboard from "../components/userComponents/UserDashboard";
+import AddTask from "../components/taskComponents/addTask/AddTask";
+import ProjectDashboard from "../components/projectComponents/ProjectDashboard";
+import ViewTask from "../components/taskComponents/viewTask/ViewTask";
 
 export default () => (
   <BrowserRouter>
@@ -25,7 +24,6 @@ export default () => (
         <Route path="/project" component={ProjectDashboard} />
         <Route path="/AddTask" component={AddTask} />
         <Route path="/ViewTask" component={ViewTask} />
-        <Route path="/UpdateTask" component={UpdateTask} />
         <Route component={() => <Redirect to={"/user"} />} />
       </Switch>
     </div>
