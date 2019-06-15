@@ -5,5 +5,5 @@ export default ({manager, index, onSelect})=>(<tr>
     <td>{manager.firstName}</td>
     <td>{manager.lastName}</td>
     <td>{manager.employeeId}</td>
-    <td><input type="checkbox" name="manager" onChange = {()=>onSelect(manager)}/></td>
+    <td><input type="checkbox" name="manager" onChange = {()=>onSelect("manager", manager)}/></td>
   </tr>)

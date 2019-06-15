@@ -25,14 +25,14 @@ open =()=>{
     }));
   }
   render() {
-    const { projects } =this.props;
+    const { projects,onProjectSelect } =this.props;
     const externalCloseBtn = <button className="close" style={{ position: 'absolute', top: '15px', right: '15px' }} onClick={this.toggle}>&times;</button>;
     return (
       <div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn}>
           <ModalHeader>Select Project</ModalHeader>
           <ModalBody>
-            <SelectProjectTable projects = {projects}/>
+            <SelectProjectTable projects = {projects} onSelect = {onProjectSelect}/>
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>Confirm</Button>{' '}

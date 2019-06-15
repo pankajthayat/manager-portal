@@ -15,10 +15,10 @@ class ProjectForm extends React.Component {
     this.setState(preState => ({ ...this.state, setDate: !preState.setDate }));
   };
   
-  onManagerSelect =(manager)=>{
-    console.log("manager selec", manager)
+  onManagerSelect =(fieldName, manager)=>{
+    console.log("manager selec", manager, fieldName)
     console.log("p : ", this.props)
-    this.props.change('manager', manager.firstName);
+    this.props.change(fieldName, manager.firstName);
   }
   onSubmit = (e)=>{
     e.preventDefault();
@@ -197,7 +197,7 @@ class ProjectForm extends React.Component {
           
         </form>
         <ManagerModal
-        onManagerSelect = {this.onManagerSelect}
+        onSelect = {this.onManagerSelect}
           onRef={ref => {
             this.managerModal = ref;
           }}

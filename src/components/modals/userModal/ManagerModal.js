@@ -25,20 +25,15 @@ open =()=>{
       modal: !prevState.modal
     }));
   }
-onManagerSelect =(manager)=>{
-  console.log("manager selec", manager)
-  console.log("p : ", this.props)
-  this.props.change('manager', "newValue");
-}
   render() {
-    const { users } =this.props;
+    const { users, onSelect } =this.props;
     const externalCloseBtn = <button className="close" style={{ position: 'absolute', top: '15px', right: '15px' }} onClick={this.toggle}>&times;</button>;
     return (
       <div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn}>
           <ModalHeader>Select Manager</ModalHeader>
           <ModalBody>
-           <SelectManagerTable  managers = {users} onSelect = {this.props.onManagerSelect}/>
+           <SelectManagerTable  managers = {users} onSelect = {this.props.onSelect}/>
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>Confirm</Button>{' '}

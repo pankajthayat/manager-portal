@@ -17,6 +17,14 @@ class AddTask extends React.Component {
     }));
   };
 
+  selectFromModal =(fieldName, value)=>{
+    console.log("selec : ", fieldName, value)
+    if(fieldName === "manager"){
+      return this.props.change("user", value.firstName);
+    }
+    this.props.change([fieldName], value[fieldName]);
+  }
+
   renderInput = ({ input, meta, label, col, type, disabled }) => {
     console.log("input : ", input, meta);
     return (
@@ -73,7 +81,6 @@ class AddTask extends React.Component {
     );
   };
   render() {
-    const { projects } = this.props;
     const { isParentTask } = this.state;
     return (
       <div class="container">
@@ -197,7 +204,7 @@ class AddTask extends React.Component {
                   <label>Manager: </label>
                 </div>
                 <Field
-                  name="manager"
+                  name="user"
                   component={this.renderInput}
                   type="text"
                   col="4"
@@ -240,12 +247,13 @@ class AddTask extends React.Component {
             </div>
           </form>
           <ProjectModal
+          onProjectSelect = { this.selectFromModal }
             onRef={ref => {
               this.projectModal = ref;
             }}
           />
           <UserModal
-            onUserSelect={this.onUserSelect}
+            onSelect={this.selectFromModal}
             onRef={ref => {
               this.userModal = ref;
             }}
