@@ -1,7 +1,7 @@
 import React from "react";
 
 export default ({manager, index, onSelect})=>(<tr>
-    <th scope="row">{index}</th>
+    <th scope="row">{index+1}</th>
     <td>{manager.firstName}</td>
     <td>{manager.lastName}</td>
     <td>{manager.employeeId}</td>

@@ -3,7 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import { bindActionCreators } from 'redux'
 import { change } from "redux-form";
-import ManagerModal from "./pop-up/ManagerModal";
+import ManagerModal from "../modals/userModal/ManagerModal";
 import * as projectActions from "../../actions/projectActions";
 class ProjectForm extends React.Component {
   state = {

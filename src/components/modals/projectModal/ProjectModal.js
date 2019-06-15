@@ -1,10 +1,9 @@
 import React from 'react';
 import { connect } from "react-redux";
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
-import { bindActionCreators } from 'redux'
-import { change } from "redux-form";
-import SelectManagerTable from "./SelectManagerTable";
-class ManagerModal extends React.Component {
+import SelectProjectTable from "./SelectProjectTable";
+
+class ProjectModal extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -25,20 +24,15 @@ open =()=>{
       modal: !prevState.modal
     }));
   }
-onManagerSelect =(manager)=>{
-  console.log("manager selec", manager)
-  console.log("p : ", this.props)
-  this.props.change('manager', "newValue");
-}
   render() {
-    const { users } =this.props;
+    const { projects } =this.props;
     const externalCloseBtn = <button className="close" style={{ position: 'absolute', top: '15px', right: '15px' }} onClick={this.toggle}>&times;</button>;
     return (
       <div>
         <Modal isOpen={this.state.modal} toggle={this.toggle} className={this.props.className} external={externalCloseBtn}>
-          <ModalHeader>Select Manager</ModalHeader>
+          <ModalHeader>Select Project</ModalHeader>
           <ModalBody>
-           <SelectManagerTable  managers = {users} onSelect = {this.props.onManagerSelect}/>
+            <SelectProjectTable projects = {projects}/>
           </ModalBody>
           <ModalFooter>
             <Button color="primary" onClick={this.toggle}>Confirm</Button>{' '}
@@ -53,12 +47,11 @@ onManagerSelect =(manager)=>{
 
 const mapStatetoProps = state => {
   return {
-    users: state.user.users || []
+    projects: state.project.projects || []
   };
 };
 const mapDisptachToProps = dispatch => {
-  return  bindActionCreators({change}, dispatch);
 
 };
 
-export default connect(mapStatetoProps, mapDisptachToProps)(ManagerModal);
+export default connect(mapStatetoProps, mapDisptachToProps)(ProjectModal);
