@@ -33,10 +33,10 @@ export const addUser = (user, reset) => async dispatch => {
       }
     };
     
-    export const getUsers = (user) => async dispatch => {
+    export const getUsers = () => async dispatch => {
         try {
           dispatch({ type: "GET_USERS_PENDING"});
-          const response = await axios.get(`${BASE_API_URL}/getAll`, user);
+          const response = await axios.get(`${BASE_API_URL}/getAll`);
           dispatch({
             type: "GET_USERS",
             payload: response.data

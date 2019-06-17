@@ -3,6 +3,7 @@ import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import ProjectModal from "../../modals/projectModal/ProjectModal";
 import UserModal from "../../modals/userModal/ManagerModal";
+import * as taskActions from "../../../actions/taskActions";
 
 class AddTask extends React.Component {
   state = {
@@ -80,12 +81,16 @@ class AddTask extends React.Component {
       </div>
     );
   };
+  handleFromSubmit = (e)=>{
+    e.preventDefault();
+    this.props.addTask(this.props.task);
+  }
   render() {
     const { isParentTask } = this.state;
     return (
       <div class="container">
         <div className="form-component">
-          <form>
+          <form onSubmit = {this.handleFromSubmit}>
             <div class="form-group">
               <div class="row">
                 <div className="col-sm-2">
@@ -266,15 +271,18 @@ class AddTask extends React.Component {
 
 const mapStatetoProps = state => {
   return {
-    projects: state.project.projects || []
+    projects: state.project.projects || [],
+    task: state.form && state.form.task && state.form.task.values
   };
 };
 const mapDisptachToProps = dispatch => {
-  return {};
+  return {
+    addTask: (task, reset) => dispatch(taskActions.addTask(task, reset))
+  };
 };
 
 AddTask = reduxForm({
-  form: "project",
+  form: "task",
   destroyOnUnmount: false, //to not destroy from data on unmount
   enableReinitialize: true
 })(AddTask);
