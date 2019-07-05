@@ -2,7 +2,7 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import * as userAction from "../../actions/userActions";
-import validate from "./formValidation";
+import { uservalidator} from "../../common/formValidators";
 
 class UserForm extends React.Component {
 
@@ -128,7 +128,7 @@ const mapDisptachToProps = dispatch => {
  UserForm = reduxForm({
   form: "user",
   destroyOnUnmount: false, //to not destroy from data on unmount
-  validate: validate,
+  validate: uservalidator,
   enableReinitialize: true 
 })(UserForm);
 
