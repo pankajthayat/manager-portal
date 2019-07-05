@@ -6,12 +6,11 @@ import {
   Switch,
 } from "react-router-dom";
 
-import Header from "../components/header/Header";
-import AddUser from "../components/user/AddUser";
-import AddTask from "../components/task/AddTask";
-import AddProject from "../components/project/AddProject";
-import ViewTask from "../components/task/ViewTask";
-import UpdateTask from "../components/task/UpdateTask";
+import Header from "../components/headerComponents/Header";
+import UserDashboard from "../components/userComponents/UserDashboard";
+import AddTask from "../components/taskComponents/addTask/AddTask";
+import ProjectDashboard from "../components/projectComponents/ProjectDashboard";
+import ViewTask from "../components/taskComponents/viewTask/ViewTask";
 
 export default () => (
   <BrowserRouter>
@@ -21,12 +20,11 @@ export default () => (
                  <div className="col-sm-10">
       <Header />
       <Switch>
-        <Route path="/AddUser" component={AddUser} />
-        <Route path="/AddProject" component={AddProject} />
+        <Route path="/user" component={UserDashboard} />
+        <Route path="/project" component={ProjectDashboard} />
         <Route path="/AddTask" component={AddTask} />
         <Route path="/ViewTask" component={ViewTask} />
-        <Route path="/UpdateTask" component={UpdateTask} />
-        <Route component={() => <Redirect to={"/AddUser"} />} />
+        <Route component={() => <Redirect to={"/user"} />} />
       </Switch>
     </div>
     <div className="col-sm-1"></div>
