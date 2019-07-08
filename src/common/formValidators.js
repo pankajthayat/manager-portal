@@ -1,6 +1,6 @@
 
 // this fn is given all the form values and return an errors object
-export const uservalidator = values => {
+export const userValidator = values => {
     //errors obj should be in same shape as values obj
     const errors = {};
     if (!values.firstName) {

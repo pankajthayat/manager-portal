@@ -2,16 +2,16 @@ import React from "react";
 import { Field, reduxForm } from "redux-form";
 import { connect } from "react-redux";
 import * as userAction from "../../actions/userActions";
-import { uservalidator} from "../../common/formValidators";
+import { userValidator} from "../../common/formValidators";
 
 class UserForm extends React.Component {
 
-  handleOnSubmit = (e, action) => {
-    e.preventDefault();
-    if(action === "update"){
-      this.props.updateUser(this.props.user, this.props.reset());
+  handleOnSubmit = (formProps) => {
+    //e.preventDefault();
+    if(this.props.buttonType === "update"){
+      this.props.updateUser(formProps, this.props.reset);
     } else{
-      this.props.addUser(this.props.user, this.props.reset());
+      this.props.addUser(formProps, this.props.reset);
     }
   };
 
@@ -28,12 +28,12 @@ class UserForm extends React.Component {
   };
 
   render() {
-    const { buttonType, pristine, submitting } = this.props;
-    console.log("t ", this.props)
+    const { buttonType, pristine, submitting, handleSubmit } = this.props;
+    console.log("props  : ", this.props);
     return (
       <div>
         <div className="form-component">
-          <form className="form-horizontal" onSubmit={(e)=>this.handleOnSubmit(e, buttonType)}>
+          <form className="form-horizontal" onSubmit={handleSubmit(this.handleOnSubmit)}>
             <div className="container">
               <div className="form-group">
                 <div className="row">
@@ -128,7 +128,7 @@ const mapDisptachToProps = dispatch => {
  UserForm = reduxForm({
   form: "user",
   destroyOnUnmount: false, //to not destroy from data on unmount
-  validate: uservalidator,
+  validate: userValidator,
   enableReinitialize: true 
 })(UserForm);
 
